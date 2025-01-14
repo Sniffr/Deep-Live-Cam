@@ -42,6 +42,7 @@ PyInstaller.__main__.run([
     *[f'--add-data={src}{os.pathsep}{dst}' for src, dst in datas],
     # Add binary dependencies
     '--add-binary', f'models{os.pathsep}models',
+    '--add-binary', f'ffmpeg/bin/*{os.pathsep}ffmpeg/bin',
     # Exclude unnecessary packages to reduce size
     '--exclude-module', 'matplotlib',
     '--exclude-module', 'PyQt5',
