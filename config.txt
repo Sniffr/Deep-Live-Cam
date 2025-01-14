@@ -1,0 +1,7 @@
+;!@Install@!UTF-8!
+Title="Deep Live Cam Installer"
+BeginPrompt="Do you want to install Deep Live Cam?"
+Progress="yes"
+Directory="DeepLiveCam"
+ExecuteFile="DeepLiveCam.exe"
+;!@InstallEnd@!
