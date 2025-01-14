@@ -15,6 +15,7 @@ from modules.utilities import (
     conditional_download,
     is_image,
     is_video,
+    get_model_path,
 )
 
 FACE_ENHANCER = None
@@ -22,14 +23,9 @@ THREAD_SEMAPHORE = threading.Semaphore()
 THREAD_LOCK = threading.Lock()
 NAME = "DLC.FACE-ENHANCER"
 
-abs_dir = os.path.dirname(os.path.abspath(__file__))
-models_dir = os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(abs_dir))), "models"
-)
-
 
 def pre_check() -> bool:
-    download_directory_path = models_dir
+    download_directory_path = modules.globals.MODELS_DIR
     conditional_download(
         download_directory_path,
         [
@@ -53,7 +49,7 @@ def get_face_enhancer() -> Any:
 
     with THREAD_LOCK:
         if FACE_ENHANCER is None:
-            model_path = os.path.join(models_dir, "GFPGANv1.4.pth")
+            model_path = get_model_path("GFPGANv1.4.pth")
             
             match platform.system():
                 case "Darwin":  # Mac OS

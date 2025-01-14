@@ -1,7 +1,19 @@
 import os
+import sys
 from typing import List, Dict, Any
 
+def get_base_dir() -> str:
+    """Get the base directory for the application, handling both PyInstaller and regular execution."""
+    if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
+        # Running in PyInstaller bundle
+        return sys._MEIPASS
+    else:
+        # Running in normal Python environment
+        return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = get_base_dir()
+MODELS_DIR = os.path.join(BASE_DIR, "models")
 WORKFLOW_DIR = os.path.join(ROOT_DIR, "workflow")
 
 file_types = [

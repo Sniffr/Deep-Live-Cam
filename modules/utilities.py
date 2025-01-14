@@ -5,6 +5,7 @@ import platform
 import shutil
 import ssl
 import subprocess
+import sys
 import urllib
 from pathlib import Path
 from typing import List, Any
@@ -207,3 +208,18 @@ def conditional_download(download_directory_path: str, urls: List[str]) -> None:
 
 def resolve_relative_path(path: str) -> str:
     return os.path.abspath(os.path.join(os.path.dirname(__file__), path))
+
+def get_model_path(model_name: str) -> str:
+    """Get the absolute path to a model file, handling both PyInstaller and regular execution."""
+    model_path = os.path.join(modules.globals.MODELS_DIR, model_name)
+    if os.path.exists(model_path):
+        return model_path
+    
+    # Fallback to checking relative to the executable
+    if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
+        exe_dir = os.path.dirname(sys.executable)
+        model_path = os.path.join(exe_dir, 'models', model_name)
+        if os.path.exists(model_path):
+            return model_path
+    
+    raise FileNotFoundError(f"Model file not found: {model_name}")
