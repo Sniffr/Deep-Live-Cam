@@ -12,6 +12,23 @@
   <img src="media/demo.gif" alt="Demo GIF" width="800">
 </p>
 
+## Quick Start (Windows)
+
+1. Download `DeepLiveCamSetup.exe` from the [latest release](https://github.com/hacksider/Deep-Live-Cam/releases/latest)
+2. Double-click the installer to extract files (choose any folder)
+3. Run `DeepLiveCam.exe` from the extracted folder
+4. Follow the on-screen instructions:
+   - Select a source image (the face you want to use)
+   - Select a target image/video (where to apply the face)
+   - Click "Start" to begin processing
+
+See [REQUIREMENTS.md](REQUIREMENTS.md) for detailed system requirements.
+
+## Alternative Builds
+
+- [Windows/NVIDIA Pre-built](https://hacksider.gumroad.com/l/vccdmm) - Optimized for NVIDIA GPUs
+- [Mac/Silicon Pre-built](https://krshh.gumroad.com/l/Deep-Live-Cam-Mac) - Optimized for Apple Silicon
+
 ##  Disclaimer
 ###### This software is intended as a productive contribution to the AI-generated media industry. It aims to assist artists with tasks like animating custom characters or using them as models for clothing, etc.
 
