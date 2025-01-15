@@ -6,11 +6,15 @@ echo "Starting Deep Live Cam build process..."
 # Ensure we're in the project root
 cd "$(dirname "$0")"
 
-# Download 7zSD.sfx if not present
+# Download dependencies
 if [ ! -f "7zSD.sfx" ]; then
     echo "Downloading 7zSD.sfx..."
     curl -L -o 7zSD.sfx "https://raw.githubusercontent.com/mcmilk/7-Zip-zstd/master/C/Util/7z/7zSD.sfx"
 fi
+
+# Download FFmpeg
+echo "Setting up FFmpeg..."
+python scripts/download_ffmpeg.py
 
 # Build with PyInstaller
 echo "Building with PyInstaller..."
