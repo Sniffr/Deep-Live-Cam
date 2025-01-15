@@ -1,4 +1,9 @@
-build/
+venv/
+__pycache__/
+*.pyc
+ffmpeg/
+models/*.pth
+models/*.onnx
 dist/
+build/
 *.spec
-.python-version
