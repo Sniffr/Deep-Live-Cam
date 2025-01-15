@@ -12,9 +12,12 @@ if [ ! -f "7zSD.sfx" ]; then
     curl -L -o 7zSD.sfx "https://raw.githubusercontent.com/mcmilk/7-Zip-zstd/master/C/Util/7z/7zSD.sfx"
 fi
 
-# Download FFmpeg
+# Download required components
 echo "Setting up FFmpeg..."
 python scripts/download_ffmpeg.py
+
+echo "Downloading model files..."
+python scripts/download_models.py
 
 # Build with PyInstaller
 echo "Building with PyInstaller..."
